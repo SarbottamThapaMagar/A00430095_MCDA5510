@@ -1,0 +1,7 @@
+C:\Users\sarbo\Desktop\Assignment1\MCDA5510_Assignments\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\sarbo\Desktop\Assignment1\MCDA5510_Assignments\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\sarbo\Desktop\Assignment1\MCDA5510_Assignments\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\sarbo\Desktop\Assignment1\MCDA5510_Assignments\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
+C:\Users\sarbo\Desktop\Assignment1\MCDA5510_Assignments\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\sarbo\Desktop\Assignment1\MCDA5510_Assignments\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\sarbo\Desktop\Assignment1\MCDA5510_Assignments\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
