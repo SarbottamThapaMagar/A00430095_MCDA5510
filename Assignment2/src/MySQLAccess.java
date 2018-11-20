@@ -17,10 +17,10 @@ import java.sql.Timestamp;;
 
 public class MySQLAccess {
 	private static final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/parts";
-	private static final String USERNAME = "root";
+	private static final String DATABASE_URL = "jdbc:mysql://dev.cs.smu.ca:3306/s_thapamagar";
+	private static final String USERNAME = "s_thapamagar";
 
-	private static final String PASSWORD = "Sarbo@1992";
+	private static final String PASSWORD = "A00430095";
 
 	public Connection setupConnection() throws Exception {
 
