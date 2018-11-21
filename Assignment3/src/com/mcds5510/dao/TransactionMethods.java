@@ -19,23 +19,19 @@ public class TransactionMethods {
 		new SimpleLogger();
 	}
 
-////Scanner for the class..
-//	public static Scanner scannerMethod() {
-//		Scanner scanner = new Scanner(System.in);
-//		return scanner;
-//	}
+
 
 	// method to check existence of user...
 	private static boolean checkId(int insertId) {
 
-		if (getTxnMethod(insertId)!= null) {
+		if (TransactionMethods.getTxnMethod(insertId)!= null) {
 			return true;
 		}
 		return false;
 	}
 
 	// insert method..
-	public static boolean insertMethod(int id, String Name, String CardNumber,
+	public  boolean insertMethod(int id, String Name, String CardNumber,
 			 double unitPrice, int qty, double totalPrice, String expDate) {
 
 		Collection<Transaction> insertTrans = new ArrayList<Transaction>();
@@ -45,10 +41,8 @@ public class TransactionMethods {
 			return false;
 		} else {
 			Connection connection = null;
-			Transaction trans = new Transaction();
 
-			trans.setId(id);
-			insertTrans = userInput(insertTrans,Name, CardNumber,unitPrice, qty,totalPrice, expDate);
+			insertTrans = userInput(insertTrans,id,Name, CardNumber,unitPrice, qty,totalPrice, expDate);
 
 			// SQL insert......
 			MySQLAccess dao = new MySQLAccess();
@@ -57,7 +51,7 @@ public class TransactionMethods {
 				connection = DBConnection.getDBConnection();
 
 				boolean trxns = dao.createTransaction(connection, insertTrans);
-				return true;
+				return trxns;
 			} catch (Exception e) {
 				SimpleLogger.logger.warning("Exception: " + e.toString());
 			} finally {
@@ -78,7 +72,7 @@ public class TransactionMethods {
 	}
 
 	// select method for getTransaction.....
-	public static String getTxnMethod(int id) {
+	public  static String getTxnMethod(int id) {
 		MySQLAccess dao = new MySQLAccess();
 
 		try {
@@ -93,7 +87,7 @@ public class TransactionMethods {
 				if (connection != null) {
 					connection.close();
 				}
-//				return false;
+
 			}
 			if (connection != null) {
 				connection.close();
@@ -104,20 +98,21 @@ public class TransactionMethods {
 
 		}
 		
-		return null;
+		return "Not found";
 
 //		return true;
 	}
 
 
 
-	private static Collection<Transaction> userInput(Collection<Transaction> insertTrans,String Name, String CardNumber,
+	private static Collection<Transaction> userInput(Collection<Transaction> insertTrans,int id,String Name, String CardNumber,
 			 double unitPrice, int qty, double totalPrice, String expDate) {
 		Transaction trans = new Transaction();
 		long millis = System.currentTimeMillis();
 		long cardNo = 0;
 		String creditCardTpye = null;
 //		System.out.println("Enter the Name on the Card:");
+		trans.setId(id);
 		if(ValidationTest.validateVar(Name)) {
 			trans.setNameOnCard(trans.getNameOnCard());
 		}
@@ -150,7 +145,7 @@ public class TransactionMethods {
 	//deleting fucntion....
 	
 	// delete method calling deleteTransaction....
-	public static boolean deleteMethod(int deleteId) {
+	public  boolean deleteMethod(int deleteId) {
 		MySQLAccess dao = new MySQLAccess();
 		Connection connection = null;
 		Collection<Transaction> trxns;
@@ -187,7 +182,7 @@ public class TransactionMethods {
 	///update Transaction....
 	
 	// update method for updateTransaction
-	public static boolean updateMethod(int id, String Name, String CardNumber,
+	public  boolean updateMethod(int id, String Name, String CardNumber,
 			 double unitPrice, int qty, double totalPrice, String expDate) {
 
 		Collection<Transaction> insertTrans = new ArrayList<Transaction>();
@@ -201,7 +196,7 @@ public class TransactionMethods {
 			Transaction trans = new Transaction();
 
 			trans.setId(id);
-			insertTrans = userInput(insertTrans,Name, CardNumber,unitPrice, qty,totalPrice, expDate);
+			insertTrans = userInput(insertTrans,id,Name, CardNumber,unitPrice, qty,totalPrice, expDate);
 
 			// SQL insert......
 			MySQLAccess dao = new MySQLAccess();

@@ -24,7 +24,7 @@ public class MySQLAccess {
 			try {
 				// Statements allow to issue SQL queries to the database
 				statement = connection.createStatement();
-				resultSet = statement.executeQuery("select * from transaction1");
+				resultSet = statement.executeQuery("select * from Trans");
 				results = createTrxns(resultSet);
 
 				if (resultSet != null) {
@@ -56,7 +56,7 @@ public class MySQLAccess {
 			try {
 				// Statements allow to issue SQL queries to the database
 				statement = connection.createStatement();
-				resultSet = statement.executeQuery("select * from transaction1 where ID=" + txnID);
+				resultSet = statement.executeQuery("SELECT * FROM Trans WHERE ID=" + txnID);
 				results = createTrxns(resultSet);
 
 				if (resultSet != null) {
@@ -115,9 +115,12 @@ public class MySQLAccess {
 				for (Transaction trxn : txn) {
 
 					System.out.println("Name on the card = " + trxn.getNameOnCard());
-					String insertSql = "INSERT INTO Transaction1 (ID,NameOnCard,CardNumber,UnitPrice,\r\n"
-							+ "	Quantity,TotalPrice,ExpDate,CreatedOn,CreatedBy,CreditCardType) VALUES (?,?,?,?,?,?,?,?,?,?)";
+					String insertSql = "INSERT INTO Trans (id, NameOnCard,CardNumber,UnitPrice,Quantity,TotalPrice,"
+							+ "ExpDate,CreatedOn,CreatedBy,CreditCardType) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
+
+					
+					
 					PreparedStatement statement = con.prepareStatement(insertSql);
 					statement.setInt(1, trxn.getId());
 					statement.setString(2, trxn.getNameOnCard());
@@ -162,7 +165,7 @@ public class MySQLAccess {
 		public boolean deleteTransaction(Connection con, int id) {
 
 			try {
-				String deleteSql = "DELETE FROM transaction1 WHERE ID=?";
+				String deleteSql = "DELETE FROM Trans WHERE ID=?";
 				PreparedStatement statement = con.prepareStatement(deleteSql);
 				statement.setInt(1, id);
 
@@ -195,7 +198,7 @@ public class MySQLAccess {
 
 			try {
 				for (Transaction trxn : txn) {
-					String updatesql = "UPDATE transaction1 SET NameOnCard=?,CardNumber=?,"
+					String updatesql = "UPDATE Trans SET NameOnCard=?,CardNumber=?,"
 							+ "UnitPrice=?,Quantity=?,TotalPrice=?,ExpDate=?,CreatedON=?,CreatedBy=?,CreditCardTpye=? WHERE ID=?";
 
 					PreparedStatement statement = con.prepareStatement(updatesql);

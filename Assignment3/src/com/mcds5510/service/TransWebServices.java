@@ -9,27 +9,29 @@ import com.mcds5510.logger.SimpleLogger;
 
 @WebService
 public class TransWebServices {
+	
+	TransactionMethods txn = new TransactionMethods();
 
 	@WebMethod
-	public static String getTransaction(int trxn) {
+	public String getTransaction(int trxn) {
 	
 		return TransactionMethods.getTxnMethod(trxn);
 	}
 	
 	public boolean updateTransaction(int trxnID, String Name, String CardNumber,
 			 double unitPrice, int qty, double totalPrice, String expDate){
-		return TransactionMethods.updateMethod(trxnID,Name, CardNumber,unitPrice, qty,totalPrice, expDate);
+		return txn.updateMethod(trxnID,Name, CardNumber,unitPrice, qty,totalPrice, expDate);
 	}
 	
 	public boolean removeTransaction(int id) {
-		return TransactionMethods.deleteMethod(id);
+		return txn.deleteMethod(id);
 	}
 	
 	public boolean  createTransaction(int trxnID, String Name, String CardNumber,
 			 double unitPrice, int qty, double totalPrice, String expDate) {
 		
 		
-	return TransactionMethods.insertMethod( trxnID,  Name,  CardNumber,
+	return txn.insertMethod( trxnID,  Name,  CardNumber,
 			  unitPrice,  qty,  totalPrice,  expDate);
 		
 	}
