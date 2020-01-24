@@ -6,10 +6,10 @@ import java.sql.DriverManager;
 public class DBConnection {
 	
 	private static final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DATABASE_URL = "jdbc:mysql://dev.cs.smu.ca:3306/s_thapamagar";
-	private static final String USERNAME = "s_thapamagar";
+	private static final String DATABASE_URL = "jdbc:mysql://dev.cs.smu.ca:3306/user_name";
+	private static final String USERNAME = "******";
 
-	private static final String PASSWORD = "A00430095";
+	private static final String PASSWORD = "*****";
 	
 	static Connection connection = null;
 	
